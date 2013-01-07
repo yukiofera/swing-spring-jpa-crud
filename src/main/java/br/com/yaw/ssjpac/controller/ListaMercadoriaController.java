@@ -24,6 +24,17 @@ import br.com.yaw.ssjpac.ui.SobreFrame;
 /**
  * Define a <code>Controller</code> principal do sistema, responsável por gerir a tela com a lista de <code>Mercadoria</code>.
  * 
+ * <p>
+ *  <code>ListaMercadoriaController</code> é mapeada como <code>@Component</code> do Spring.
+ *  Dessa forma uma instância de <code>ListaMercadoriaController</code> pode ser criada e gerenciada
+ *  pelo Spring, favorecendo a Inversão de Controle <i>(IoC)</i> e Injeção de Dependência <i>(DI)</i>.
+ * </p>
+ * 
+ * <p>
+ *  Essa <code>Controller</code> depende de outros componentes da camada <code>Model</code> (DAO) e <code>View</code> (telas).
+ *  As dependências são resolvidas pelo Spring, através da <strong>Injeção de Dependência</strong> c/ a anotação <code>@Autowired</code>.
+ * </p>
+ * 
  * @see br.com.yaw.sjpac.controller.PersistenceController
  * 
  * @author YaW Tecnologia
@@ -33,6 +44,8 @@ public class ListaMercadoriaController extends AbstractController {
 
 	@Autowired
 	private ListaMercadoriasFrame frame;
+	
+	@Autowired
 	private SobreFrame sobreFrame;
 	
 	@Autowired
@@ -47,10 +60,14 @@ public class ListaMercadoriaController extends AbstractController {
 	public ListaMercadoriaController() {
 	}
 	
+	/**
+	 * Método executado pelo <code>Spring</code>, depois de criar a instância de <code>ListaMercadoriaController</code>.
+	 * 
+	 * <p>Faz o registro das ações e tratadores de eventos.</p>
+	 */
 	@PostConstruct
 	private void init() {
 		this.frame.addWindowListener(this);
-		this.sobreFrame = new SobreFrame();
 		
 		registerAction(frame.getNewButton(), new AbstractAction() {
 			public void action() {
@@ -70,12 +87,14 @@ public class ListaMercadoriaController extends AbstractController {
 			}
 		});
 		
-		registerAction(frame.getMenuSobre(), new AbstractAction() {
+		AbstractAction actionSobre = new AbstractAction() {
 			@Override
 			protected void action() {
 				sobreFrame.setVisible(true);
 			}
-		});
+		};
+		registerAction(frame.getMenuSobre(), actionSobre);
+		this.frame.getMenuAjuda().addListener(actionSobre);
 		
 		this.frame.getTable().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent event) {
@@ -131,8 +150,8 @@ public class ListaMercadoriaController extends AbstractController {
 			}
 		});
 		
-		refreshTable();
 		this.frame.setVisible(true);
+		refreshTable();
 	}
 	
 	private void refreshTable() {

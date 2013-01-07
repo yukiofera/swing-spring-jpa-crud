@@ -26,6 +26,12 @@ import br.com.yaw.ssjpac.model.Mercadoria;
  *  Em edição é possível acionar a funcionalidade para remover <code>Mercadoria</code>.
  * </p>
  * 
+ * <p>
+ *  <code>IncluirMercadoriaFrame</code> é mapeada como <code>@Component</code> do Spring. 
+ *  Dessa forma uma instância de <code>IncluirMercadoriaFrame</code> pode ser criada e gerenciada
+ *  pelo Spring, favorecendo a Inversão de Controle <i>(IoC)</i> e Injeção de Dependência <i>(DI)</i>.
+ * </p>
+ * 
  * @author YaW Tecnologia
  */
 @Component
@@ -80,7 +86,7 @@ public class IncluirMercadoriaFrame extends JFrame {
 
 		bSalvar = new JButton("Salvar");
 		bSalvar.setActionCommand("salvarIncluirMercadoriaAction");
-		bSalvar.setMnemonic(KeyEvent.VK_M);
+		bSalvar.setMnemonic(KeyEvent.VK_S);
 		panel.add(bSalvar);
 
 		bCancelar = new JButton("Cancelar");

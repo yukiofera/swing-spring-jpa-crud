@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
@@ -19,7 +18,13 @@ import br.com.yaw.ssjpac.model.Mercadoria;
 /**
  * Tela principal da aplicação. Apresenta uma lista com as mercadorias cadastradas. 
  * 
- * <p>A partir dessa tela eh possivel criar/editar ou pesquisar mercadoria.</p>
+ * <p>A partir dessa tela é possível criar/editar ou pesquisar mercadoria.</p>
+ * 
+ * <p>
+ *  <code>ListaMercadoriasFrame</code> é mapeada como <code>@Component</code> do Spring. 
+ *  Dessa forma uma instância de <code>ListaMercadoriasFrame</code> pode ser criada e gerenciada
+ *  pelo Spring, favorecendo a Inversão de Controle <i>(IoC)</i> e Injeção de Dependência <i>(DI)</i>.
+ * </p>
  * 
  * @author YaW Tecnologia
  */
@@ -32,6 +37,7 @@ public class ListaMercadoriasFrame extends JFrame {
 	private JButton bFindMercadoria;
 	private JButton bRefreshLista;
 	private JMenuBar menubar;
+	private MenuF1 menuAjuda;
 	private JMenuItem menuSobre;
 	
 	public ListaMercadoriasFrame() {
@@ -64,9 +70,9 @@ public class ListaMercadoriasFrame extends JFrame {
 		bRefreshLista.setMnemonic(KeyEvent.VK_A);
 		
 		menubar = new JMenuBar();
-		JMenu menuAjuda = new JMenu("Ajuda");
+		menuAjuda = new MenuF1("Ajuda");
 		menuAjuda.setMnemonic(KeyEvent.VK_J);
-        menuSobre = new JMenuItem("Sobre");
+        menuSobre = new JMenuItem("Sobre    - F1");
         
         menuAjuda.add(menuSobre);
         menubar.add(menuAjuda);
@@ -109,4 +115,9 @@ public class ListaMercadoriasFrame extends JFrame {
 	public JMenuItem getMenuSobre() {
 		return menuSobre;
 	}
+	
+	public MenuF1 getMenuAjuda() {
+		return menuAjuda;
+	}
+
 }

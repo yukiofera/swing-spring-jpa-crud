@@ -10,11 +10,12 @@ Além de utilizar uma tecnologia padrão para o mapeamento objeto relacional (OR
 
 Tecnologias utilizadas na implementação:
 * Swing: utilizamos o framework Swing para construção das interfaces e componentes gráficos da aplicação (camada cliente);
-* Spring: utilizamos alguns componentes do Spring Framework como Core, Transactional, ORM e integração com JSR 250;
-* JPA: API alto nível, padrão da tecnologia Java, para definir o mapeamento objeto relacional (ORM).
-* Hibernate: provedor JPA para mapeamento objeto relacional (ORM).
+* Spring Framework: utilizamos alguns componentes do Spring Framework como Core, Transactional, ORM, Data JPA e integração com JSR 250;
+* JPA: API alto nível, padrão da tecnologia Java, para definir o mapeamento objeto relacional (ORM);
+* Bean Validation: mecanismo padrão do Java para determinar regras de validação dos dados através de anotações;
+* Hibernate: provedor JPA para mapeamento objeto relacional (ORM);
 * Collection: reunimos uma relação de objeto em memória via coleções do Java;
-* Thread: algumas ações (eventos) dos componentes da tela com o banco de dados são tratados em outra thread (SwingUtilities), de forma que o usuário tenha uma melhor experiência no uso da aplicação.
+* Thread: algumas ações (eventos) dos componentes da tela com o banco de dados são tratados em outra thread (SwingUtilities), de forma que o usuário tenha uma melhor experiência no uso da aplicação;
 
 Para facilitar o uso de bibliotecas externas e a construção, o projeto utiliza o Maven.
 

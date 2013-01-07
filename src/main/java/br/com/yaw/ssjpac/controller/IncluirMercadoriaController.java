@@ -20,6 +20,17 @@ import br.com.yaw.ssjpac.validation.Validator;
 /**
  * Define a <code>Controller</code> responsável por gerir a tela de inclusão/edição de <code>Mercadoria</code>.
  * 
+ * <p>
+ *  <code>IncluirMercadoriaController</code> é mapeada como <code>@Component</code> do Spring.
+ *  Dessa forma uma instância de <code>IncluirMercadoriaController</code> pode ser criada e gerenciada
+ *  pelo Spring, favorecendo a Inversão de Controle <i>(IoC)</i> e Injeção de Dependência <i>(DI)</i>.
+ * </p>
+ * 
+ * <p>
+ *  Essa <code>Controller</code> depende de outros componentes da camada <code>Model</code> (DAO) e <code>View</code> (telas).
+ *  As dependências são resolvidas pelo Spring, através da <strong>Injeção de Dependência</strong> c/ a anotação <code>@Autowired</code>.
+ * </p>
+ * 
  * @see br.com.yaw.sjpac.controller.PersistenceController
  * 
  * @author YaW Tecnologia
@@ -41,6 +52,11 @@ public class IncluirMercadoriaController extends AbstractController {
 		super(parent);
 	}
 
+	/**
+	 * Método executado pelo <code>Spring</code>, depois de criar a instância de <code>IncluirMercadoriaController</code>.
+	 * 
+	 * <p>Faz o registro das ações.</p>
+	 */
 	@PostConstruct
 	private void init() {
 		frame.addWindowListener(this);

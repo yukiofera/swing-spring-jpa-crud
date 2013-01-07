@@ -12,44 +12,23 @@ import br.com.yaw.ssjpac.model.Mercadoria;
  * 
  * <p>Define as operações basicas de cadastro (CRUD), seguindo o design pattern <code>Data Access Object</code>.</p>
  * 
+ * <p>
+ *  As operações básicas do cadastro são definidas indiretamente pela interface pai, <code>JpaRepository</code>.
+ *  O Spring Data JPA gera a classe (proxy) que implementa essa interface. Dessa forma métodos especificos do cadastro, como
+ *  <code>getMercadoriasByNome</code>, devem mapear a consulta <code>JPA-QL</code>.
+ * </p>
+ * 
  * @author YaW Tecnologia
  */
 public interface MercadoriaDAO extends JpaRepository<Mercadoria, Integer> {
 
 	/**
-	 * Faz a inserção ou atualização da mercadoria na base de dados.
-	 * @param mercadoria
-	 * @return referência atualizada do objeto.
-	 * @throws <code>RuntimeException</code> se algum problema ocorrer.
-	 *
-	Mercadoria save(Mercadoria mercadoria);
-	
-	/**
-	 * Exclui o registro da mercadoria na base de dados 
-	 * @param mercadoria
-	 * @throws <code>RuntimeException</code> se algum problema ocorrer.
-	 *
-	void remove(Mercadoria mercadoria);
-	
-	/**
-	 * @return Lista com todas as mercadorias cadastradas no banco de dados.
-	 * @throws <code>RuntimeException</code> se algum problema ocorrer.
-	 *
-	List<Mercadoria> getAll();
-	
-	/**
+	 * Utiliza anotação <code>Query</code> do Spring Data JPA pra definir o código SQL.
 	 * @param nome Filtro da pesquisa de mercadorias.
 	 * @return Lista de mercadorias com filtro em nome.
 	 * @throws <code>RuntimeException</code> se algum problema ocorrer.
 	 */
 	@Query("select m from Mercadoria m where m.nome like ?1")
 	List<Mercadoria> getMercadoriasByNome(String nome);
-	
-	/**
-	 * @param id filtro da pesquisa.
-	 * @return Mercadoria com filtro no id, caso nao exista retorna <code>null</code>.
-	 * @throws <code>RuntimeException</code> se algum problema ocorrer.
-	 *
-	Mercadoria findById(Integer id);*/
 
 }

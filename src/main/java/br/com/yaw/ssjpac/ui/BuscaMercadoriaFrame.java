@@ -18,6 +18,12 @@ import org.springframework.stereotype.Component;
  * Tela utilizada para realizar a pesquisa de <code>Mercadoria</code>
  * com filtro no campo <code>nome</code>. 
  * 
+ * <p>
+ *  <code>BuscaMercadoriaFrame</code> é mapeada como <code>@Component</code> do Spring. 
+ *  Dessa forma uma instância de <code>BuscaMercadoriaFrame</code> pode ser criada e gerenciada
+ *  pelo Spring, favorecendo a Inversão de Controle <i>(IoC)</i> e Injeção de Dependência <i>(DI)</i>.
+ * </p>
+ * 
  * @author YaW Tecnologia
  */
 @Component

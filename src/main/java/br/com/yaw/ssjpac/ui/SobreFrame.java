@@ -8,7 +8,6 @@ import static br.com.yaw.ssjpac.util.ApplicationProperties.getURLLogo;
 import static br.com.yaw.ssjpac.util.ApplicationProperties.getVersao;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
@@ -22,13 +21,22 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Tela <i>Sobre</i>. Apresenta detalhes da aplicação.
+ * 
+ * <p>
+ *  <code>SobreFrame</code> é mapeada como <code>@Component</code> do Spring. 
+ *  Dessa forma uma instância de <code>SobreFrame</code> pode ser criada e gerenciada
+ *  pelo Spring, favorecendo a Inversão de Controle <i>(IoC)</i> e Injeção de Dependência <i>(DI)</i>.
+ * </p>
  * 
  * @see br.com.yaw.sjc.util.ApplicationProperties
  * 
  * @author YaW Tecnologia
  */
+@Component
 public class SobreFrame extends JFrame {
 
 	public SobreFrame(){
@@ -118,9 +126,9 @@ public class SobreFrame extends JFrame {
         return painelLabels;
     }
 	
-	private Group groupComponents(GroupLayout layout, Component ... components) {
+	private Group groupComponents(GroupLayout layout, java.awt.Component ... components) {
 		Group g = layout.createParallelGroup(GroupLayout.Alignment.LEADING);
-		for (Component c: components) {
+		for (java.awt.Component c: components) {
 			g.addComponent(c);
 		}
 		return g;

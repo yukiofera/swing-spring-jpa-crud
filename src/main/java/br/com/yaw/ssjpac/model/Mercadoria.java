@@ -23,6 +23,11 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  * <p>As funcionalidades desse sistema demonstração são concentradas no cadastro (CRUD) de mercadorias.</p>
  * 
  * <p>
+ *  A classe <code>AbstractPersistable</code> (Spring Data JPA) define uma estrutura com ID da entidade, método equals e hashcode.
+ *  O objetivo em <i>enxugar</i> o mapeamento JPA. 
+ * </p>
+ * 
+ * <p>
  *  Outra característica dessa classe, é o uso de anotações do Bean Validations para validar o estado (dados) da <code>Mercadoria</code>.
  *  Bean Validations (JSR 303) é uma especificação Java para habilitar a validação de dados via o uso de anotações. O principal provider
  *  dessa API é o <code>Hibernate Validator</code>.
